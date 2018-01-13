@@ -8,6 +8,7 @@ print_usage() {
     echo "  --dist  create a public distribution rpm"
     echo "  --target target distribution in mock cfg name"
     echo "  --configure-user  configure current user as mock group member"
+    echo "  --xtrace print command traces before executing command"
     exit 1
 }
 REBUILD=0
@@ -35,6 +36,10 @@ while [ $# -gt 0 ]; do
             ;;
         "--configure-user")
             USERMOD=1
+            shift 1
+            ;;
+        "--xtrace")
+            set -o xtrace
             shift 1
             ;;
         *)
